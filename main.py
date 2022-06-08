@@ -35,12 +35,16 @@ def main():
     # Generating the data from the scrapped elements
     movies_list = movie_list_generator(movie_tags, rating_tags)
 
-    # Select a random movie
-    random_entry = random.randrange(0, 249)
-    movie_info = movies_list[random_entry]
-    print(
-        f'{movie_info[0]} {movie_info[1]}, Rating: {movie_info[2]}, Starring: {movie_info[3]}')
+    # Select a random movie until the user stops
+    while(True):
+        random_entry = random.randrange(0, 249)
+        movie_info = movies_list[random_entry]
+        print(
+            f'{movie_info[0]} {movie_info[1]}, Rating: {movie_info[2]}, Starring: {movie_info[3]}')
 
+        user_input = input('Do you want another movie (y/[n])? ')
+        if user_input != 'y':
+            break
 
 # A class to give out the
 
