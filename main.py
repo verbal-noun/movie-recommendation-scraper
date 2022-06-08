@@ -32,9 +32,14 @@ def main():
     movie_tags = soup.select('td.titleColumn')
     # Selecting the ratings
     rating_tags = soup.select('td.posterColumn span[name=ir]')
-
     # Generating the data from the scrapped elements
     movies_list = movie_list_generator(movie_tags, rating_tags)
+
+    # Select a random movie
+    random_entry = random.randrange(0, 249)
+    movie_info = movies_list[random_entry]
+    print(
+        f'{movie_info[0]} {movie_info[1]}, Rating: {movie_info[2]}, Starring: {movie_info[3]}')
 
 
 # A class to give out the
@@ -56,7 +61,7 @@ def movie_list_generator(movie_tags, rating_tags):
         # Round to one decimal place
         rating = round(rating, 1)
 
-        movies_dict[movie_name] = (rating, year, actor_list)
+        movies_dict[i] = (movie_name, year, rating, actor_list)
 
     return movies_dict
 
